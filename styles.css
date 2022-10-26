@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500;700&display=swap');
+
+
+/* Option + Z will wrap the text around the screen point */
+
+/* font-family: 'Fraunces', serif; */
+
+
+/* To remove the default padding from the browser */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: hsl(30, 38%, 92%);
+    font-size: 14px;
+}
+
+.container {
+    margin: 30px auto;
+    padding: 0 30px;
+}
+
+.grid {
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.img img {
+    max-width: 100%;
+}
