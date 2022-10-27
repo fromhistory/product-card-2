@@ -3,8 +3,6 @@
 
 /* Option + Z will wrap the text around the screen point */
 
-/* font-family: 'Fraunces', serif; */
-
 
 /* To remove the default padding from the browser */
 
@@ -14,12 +12,14 @@
     box-sizing: border-box;
 }
 
-
-
-.body {
+body {
     font-family: 'Montserrat', sans-serif;
     background-color: hsl(30, 38%, 92%);
     font-size: 14px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .container {
@@ -27,12 +27,168 @@
     padding: 0 30px;
 }
 
+/* Grid system allows to create two columns. Use grid-template-column and allow the max width for the image to be 100% so it does not overgrow the screen size and it would take the similar amount of height with the other column */
+
 .grid {
     max-width: 700px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    background-color: white;
+    border-radius: 15px;
+    /* To prevent image from overflowing the grid and causing the edges not to be rounded, use overflow property and make it hidden */
+    overflow: hidden;
+
 }
 
+/* First goes the name of the class and then the tag */
 .img img {
+    /* max width prevents the image to be giant */
     max-width: 100%;
+    /* To make the image stick close to  the container make it inherit the display */
+    display: inherit;
 }
+
+.card-content {
+    padding: 15px;
+    /* In this case display flex helps to spread the content items evenly */
+    display: flex;
+    flex-direction: column;
+    /* makes similar amount of space between the elements */
+    justify-content: space-between;
+}
+
+h6.product-cat {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+    color: hsl(228, 12%, 48%);
+    font-weight: 500;
+}
+
+h2.product-name {
+    font-family: 'Fraunces', serif;
+    color: hsl(212, 21%, 14%);
+    font-size: 34px;
+    line-height: 1em;
+}
+
+p.product-description {
+    color: hsl(228, 12%, 48%);
+    line-height: 1.6em;
+}
+
+.price {
+    display: flex;
+    align-items: center;
+
+}
+
+p.current-price {
+    font-family: 'Fraunces', serif;
+    color: hsl(158, 36%, 37%);
+    font-size: 25px;
+    padding-right: 25px;
+}
+
+p.old-price {
+    color: hsl(228, 12%, 48%);
+    text-decoration: line-through;
+}
+
+button.cta {
+    background-color: hsl(158, 36%, 37%);
+    border: none;
+    padding: 14px 0;
+    border-radius: 12px;
+    color: white;
+    font-size: 14px;
+    font-weight: 700;
+    /* makes a pointer cursor from a default cursor */
+    cursor: pointer; 
+    /* Soften the transition effect when hovered */
+    transition: backrgound-color .3s ease; 
+    /* Makes it take the whole line */
+    width: 100%;
+}
+
+button.cta:hover {
+    background-color: hsl(158, 36%, 28%);
+}
+/* Add a margin to a button icon */
+button.cta img {
+    padding-right: 7px;
+}
+
+/* Inspect in responsive layout at which point the image begings to be impacted and take that breakpoint for your media max-width */
+@media only screen and (max-width: 628px) {
+    .grid {
+        /* make the grid column one fraction */
+        grid-template-columns: 1fr;
+    }
+
+    /* make image smaller */
+    .img img {
+        max-height: 450px;
+        /* to avoid white space on the side use width 100% */
+        width: 100%;
+        /* NEW THING: to avoid the image stretching set the object-fit. It will cut the extra part but not shrink it */
+        object-fit: cover;
+    }
+
+    .card-content {
+        /* Why are we doing display block on the mobile version? */
+        display: block;
+    }
+
+    h6.product-cat, h2.product-name, p.product-description, .price {
+        padding-bottom: 23px;
+    }
+
+}
+
+@media only screen and (max-width: 375px) {
+   .container {
+        margin: 15px auto;
+        padding: 0 15px;
+   }
+
+   /* Reduce the height of the image */
+
+   .img img {
+    max-height: 290px;
+   }
+
+   .card-content {
+    padding: 24px;
+   }
+
+   h6.product-cat, h2.product-name, p.product-description, .price {
+    padding-bottom: 16px;
+}
+
+h2.product-name {
+    font-size: 28px;
+}
+
+p.product-description {
+    font-size: 12px;;
+}
+
+p.current-price{
+    font-size: 23px;
+}
+
+button.cta {
+    padding: 12px 0;
+    font-size: 13px;
+}
+
+}
+
+
+
+
+
+
+
+
